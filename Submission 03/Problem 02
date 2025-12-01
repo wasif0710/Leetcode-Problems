@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+int isPalindrome(char *s) {
+    int left = 0;
+    int right = strlen(s) - 1;
+
+    while (left < right) {
+        if (s[left] != s[right]) {
+            return 0;   
+        }
+        left++;
+        right--;
+    }
+    return 1;  
+}
+
+char* firstPalindrome(char words[][101], int wordsSize) {
+    for (int i = 0; i < wordsSize; i++) {
+        if (isPalindrome(words[i])) {
+            return words[i];  
+        }
+    }
+    return "";   
+}
+
+int main() {
+    char words[5][101] = {"abc", "car", "ada", "racecar", "cool"};
+    int size = 5;
+
+    char *result = firstPalindrome(words, size);
+    printf("%s\n", result);   
+
+    return 0;
+}
